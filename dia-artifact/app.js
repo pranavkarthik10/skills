@@ -84,7 +84,23 @@ var bakedChartStyle = CHART_STYLES[bakedChartStyleIndex];
 
 var currentColorIndex = bakedColorIndex;
 var currentFontIndex = bakedFontIndex;
-var STORAGE_KEY = 'report-settings';
+
+function resolveStorageKey(prefix) {
+  if (_reportData.storageKey && typeof _reportData.storageKey === 'string') {
+    return prefix + ':' + _reportData.storageKey;
+  }
+  var title = (document.title || '').trim();
+  if (title) {
+    return prefix + ':' + title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 80);
+  }
+  try {
+    var base = (location.pathname || '').split('/').pop();
+    if (base) return prefix + ':' + base;
+  } catch (e) { /* silent */ }
+  return prefix;
+}
+
+var STORAGE_KEY = resolveStorageKey('report-settings');
 
 
 /* ── Persistence ────────────────────────────────────────── */

@@ -49,7 +49,7 @@ Every report must include these tags explicitly:
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Report Title</title>
 <link rel="stylesheet" href="style.css">
-<script id="report-data" type="application/json">{"date":"2026-07-12T01:08:51Z","colorIndex":0,"fontIndex":0,"chartStyleIndex":0}</script>
+<script id="report-data" type="application/json">{"date":"2026-07-12T01:08:51Z","colorIndex":3,"fontIndex":0,"chartStyleIndex":0,"storageKey":"my-report-slug"}</script>
 <script src="app.js" defer></script>
 ```
 
@@ -63,10 +63,13 @@ Every report must include these tags explicitly:
 | `colorIndex` | 0–7 | Initial paper color (see palette below) |
 | `fontIndex` | 0–2 | Initial headline font (0=Exposure, 1=Arial, 2=SF Pro) |
 | `chartStyleIndex` | 0–2 | Initial chart style (0=pattern, 1=color, 2=inked) |
+| `storageKey` | string (optional) | Unique slug for settings persistence; isolates color/font prefs per report when opened as local files |
 
 **Paper colors** (`colorIndex`): 0=ivory `#FAF9F5`, 1=canary, 2=rose, 3=powder blue, 4=sage, 5=orchid, 6=salmon, 7=fog.
 
-Pick indices deliberately or vary them for visual interest. Users can override color/font via the settings panel (persisted in localStorage).
+**Randomize seeds for each new report.** Pick a random `colorIndex` (0–7) every time — do not default to 0. Optionally vary `fontIndex` and `chartStyleIndex` too. Dia randomizes these server-side; outside Dia you must set them explicitly in `report-data`.
+
+Set `storageKey` to a stable slug derived from the report topic (e.g. `"best-local-models-july-2026"`). Without it, `app.js` falls back to `document.title`, which also isolates reports — but an explicit slug is safer if titles collide. Users can override color/font via the settings panel (persisted per `storageKey` in localStorage).
 
 ### Charts
 
