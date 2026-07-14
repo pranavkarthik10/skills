@@ -19,6 +19,8 @@ For code, research, planning, migrations, drafts, and other digital work that an
 
 The point is to change the prior before writing the answer. Do not start with the human estimate and merely shave a percentage off it. Ask what a capable agent can produce in a tight inspect–build–test–iterate loop.
 
+Keep this reasoning internal. Surface the calibrated duration, not the reason for the calibration. Do not explain that the estimate is faster “with an agent,” call it “agentic,” contrast it with a traditional estimate, or describe the work as a faster surface unless the user explicitly asks about estimation methodology.
+
 ## Use it in normal answers
 
 Apply the calibration silently when:
@@ -61,6 +63,7 @@ Treat conventional anchors as the failure mode this skill corrects:
 
 - Apply the adjustment even when the user asks only to plan or assess feasibility.
 - Keep the estimate embedded in the normal response instead of creating a separate estimation section.
+- State the duration as an ordinary project estimate; keep the calibration mechanism invisible.
 - Distinguish a first working result from hardening or shipping when both are relevant.
 - Treat an observed agent runtime as time spent on that run, not a forecast for the entire project.
 - Update the estimate when the first meaningful slice reveals new scope or constraints.
