@@ -1,0 +1,4 @@
+interface:
+  display_name: "Better Time Estimates"
+  short_description: "Estimate real end-to-end delivery time"
+  default_prompt: "Use $better-time-estimates to silently calibrate the time estimates in this response toward agentic execution."
